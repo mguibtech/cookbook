@@ -1,21 +1,38 @@
-import {View, Text, StyleSheet, SafeAreaView, TextInput, TouchableOpacity} from 'react-native'
+import {
+    View,
+    Text,
+    StyleSheet,
+    SafeAreaView, TextInput, TouchableOpacity, FlatList
+} from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
 import { Logo } from '../../components/Logo'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
-export function Home(){
+import api from '../../services/api'
+import { FoodList } from '../../components/foodList'
+
+export function Home() {
 
     const [inputValue, setInputValue] = useState("");
+    const [foods, setFoods] = useState([])
 
-    function handleSearch(){
+    function handleSearch() {
         console.log('Vc clicou')
         console.log(inputValue)
-
     }
 
-    return(
+    useEffect(() => {
+        async function fethApi() {
+            const response = await api.get('/foods')
+            setFoods(response.data)
+        }
+
+        fethApi()
+    }, [])
+
+    return (
         <SafeAreaView style={styles.container}>
-            <Logo/>
+            <Logo />
 
             <Text style={styles.title}>Econtre a receita</Text>
             <Text style={styles.title}>que combina com você!</Text>
@@ -28,28 +45,37 @@ export function Home(){
                     onChangeText={(text) => setInputValue(text)}
                 />
                 <TouchableOpacity onPress={handleSearch}>
-                    <MaterialIcons name='search' size={28} color='#4cbe6c'/>
+                    <MaterialIcons name='search' size={28} color='#4cbe6c' />
                 </TouchableOpacity>
             </View>
+
+            <FlatList
+                data={foods}
+                keyExtractor={(item) => String(item.id)}
+                renderItem={({ item }) => 
+                    <FoodList data={item}/>
+                }
+                showsVerticalScrollIndicator={false}
+            />
         </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
-    container:{
+    container: {
         flex: 1,
         backgroundColor: '#f3f9ff',
         paddingTop: 36,
         paddingStart: 14,
         paddingEnd: 14
     },
-    title:{
+    title: {
         fontSize: 26,
         fontWeight: 'bold',
         color: '#0e0e0e',
 
     },
-    form:{
+    form: {
         width: '100%',
         borderRadius: 8,
         marginTop: 16,
@@ -62,7 +88,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between'
     },
-    input:{
+    input: {
         width: '90%',
         height: 54,
         maxWidth: '90%'
