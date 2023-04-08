@@ -7,7 +7,7 @@ export function FoodList({ data }) {
     const navigation = useNavigation()
 
     function handleNavigate(){
-        navigation.navigate("Detail", {data: data})
+        navigation.navigate("Detail", {data})
     }
     return (
         <TouchableOpacity 
