@@ -26,10 +26,7 @@
 
 ## 💻 Sobre o projeto
 
-📩 Receita Fácil - é um projeto para criação de receitas caseiras, as receitas estão sendo utilizadas em uma api local usando o JSON Server simulando um back-end real.
-Os usuários podem escolher qual receita querem prepar, para isso, podem optar por ver o vídeo através de uma WebView que direciona para vídeo específico da receita 
-no Youtuber, ou somente seguir todos os ingredientes e passos listados abaixo. Em seguida podem escolher em marcar/desmarcar esta receita como favorita na memóri
- do próprio dispositivo ou compartilhar a receita com quem desejar. Por fim, os usuários podem controlar suas receitas favoritas em uma tela específica através de um Tab Navigator.
+📩 Receita Fácil - É um projeto  para criação de receitas caseiras, as receitas estão sendo utilizadas em uma API local usando o JSON Server simulando um back-end real. Os usuários podem escolher qual receita querem preparar, para isso, podem optar por ver o vídeo através de uma WebView que direciona para vídeo específico da receita no Youtuber, ou somente seguir todos os ingredientes e passos listados abaixo. Em seguida podem escolher em marcar/desmarcar esta receita como favorita na memória do próprio dispositivo ou compartilhar a receita com quem desejar. Por fim, os usuários podem controlar suas receitas favoritas em uma tela específica através de um Tab Navigator.
 
 ---
 
